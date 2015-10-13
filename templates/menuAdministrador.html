@@ -1,0 +1,74 @@
+<script type="text/javascript" src="../lib/alertify.js"></script>
+<link rel="stylesheet" href="../themes/alertify.core.css" />
+<link rel="stylesheet" href="../themes/alertify.default.css" />
+<script>
+	function alert(mensaje){
+				//un alert
+				alertify.alert(mensaje, function () {
+					//aqui introducimos lo que haremos tras cerrar la alerta.
+					//por ejemplo -->  location.href = 'http://www.google.es/';  <-- Redireccionamos a GOOGLE.
+				});
+			}
+
+	function alertt(mensaje){
+		//un alert
+		alertify.alert(mensaje, function () {
+			//aqui introducimos lo que haremos tras cerrar la alerta.
+			//por ejemplo -->  location.href = 'http://www.google.es/';  <-- Redireccionamos a GOOGLE.
+			location.href = 'plataforma.php';
+		});
+	}
+</script>
+<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->						
+						<img src="images/empresa/logo.png" width="700px" height="300px">						
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.php">Inicio</a></li>
+						          <li><a href="#">Empresa</a>
+						             <ul>
+						              <li><a href="quienesSomosAdmin.php">¿Quiénes somos?</a></li>                 
+						              <li><a href="mision.php">Misión</a></li>                 
+						              <li><a href="vision.php">Visión</a></li>                 
+						              <li><a href="objetivo.php">Objetivo</a></li>                 
+						              <li><a href="valores.php">Valores</a></li>                 
+						              <li><a href="beneficiosAdmin.php">Beneficios</a></li>       				              
+						              <li><a href="experienciasAdmin.php">Experiencias</a></li>       				              
+						              <li><a href="galeriaAdmin.php">Galeria</a></li>       				              
+						            </ul>
+						          </li>
+						          <li><a href="vacantesAdmid.php">Vacantes</a></li>
+						          <li><a href="requisitosAdmin.php">Requisitos</a></li>				          
+						          <li><a href="solicitudes.php">Solicitudes</a></li>				          
+						          <?php  
+						          	session_start();		          
+						          	$roott = "administrador";
+						          	if(isset($_SESSION['usuario']) and $_SESSION['usuario'] != $roott) { 
+						          		echo "<li><a>Plataforma</a>";
+						          		echo "<ul>";
+						          		echo "<li><a href='perfil.php'>Perfil</a></li>";
+						          		echo "<li><a href='mensajeria.php'>Mensajeria</a></li>";
+						          		echo "<li><a href='templates/logout.php'>Salir</a></li>";
+						          		echo "</ul>";
+						          		echo "</li>";
+						          	} else if(isset($_SESSION['usuario']) and $_SESSION['usuario'] == $roott) {				          		
+						          		echo "<li><a>Plataforma</a>";
+						          		echo "<ul>";
+						          		echo "<li><a href='administrador.php'>Administrar</a></li>";
+						          		echo "<li><a href='perfil.php'>Perfil</a></li>";
+						          		echo "<li><a href='mensajeria.php'>Mensajeria</a></li>";
+						          		echo "<li><a href='templates/logout.php'>Salir</a></li>";
+						          		echo "</ul>";
+						          		echo "</li>";
+						          	}	else if ( !isset($_SESSION['usuario']) ){
+						          	   echo "<li><a href='#openModal'>Plataforma</a></li>";
+						          	}			          					          	
+						          ?>
+						        </ul>
+						</nav>
+
+				</div>
